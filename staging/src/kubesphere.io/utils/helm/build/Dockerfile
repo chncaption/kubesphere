@@ -3,7 +3,7 @@
 # that can be found in the LICENSE file.
 
 # Download dependencies
-FROM alpine:3.16 as base_os_context
+FROM alpine:3.20.3 as base_os_context
 
 ARG TARGETARCH=amd64
 ARG TARGETOS=linux
@@ -28,7 +28,7 @@ RUN tar xvzf /tmp/kustomize_${KUSTOMIZE_VERSION}_${TARGETOS}_${TARGETARCH}.tar.g
 RUN mv /tmp/kustomize ${OUTDIR}/usr/local/bin/
 
 # Final Image
-FROM alpine:3.16
+FROM alpine:3.20.3
 
 COPY --from=base_os_context /out/ /
 
